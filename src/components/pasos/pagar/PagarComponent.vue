@@ -26,10 +26,10 @@
           <v-icon class="mb-5" color="success" icon="mdi-check-circle" size="112"></v-icon>
           <h2 class="text-h5 mb-6">La transacción se ha realizado con exito</h2>
           <div>
-            <b>Nro de transacción</b> : {{ deudasStore.qrGenerado.alias.slice(-8)}}
+            <b>Nro de transacción</b> : {{ deudasStore.qrGenerado.alias.slice(-8) }}
           </div>
           <div>
-            <b>Monto</b> : {{ datosPago.monto + ' ' + datosPago.moneda }}
+            <b>Monto</b> : {{ datosPago.monto + ' ' + datosPago.moneda }}<br>
           </div>
           <div>
             <b>Fecha Procesado</b> : {{ datosPago.fechaproceso }}
@@ -57,13 +57,13 @@
             <v-chip color="success" variant="flat" @click="descargaQr(deudasStore.qrGenerado.imagen_qr)">
               Descargar QR &nbsp;&nbsp; <v-icon icon="mdi mdi-arrow-collapse-down" start></v-icon></v-chip>
           </div>
-          <!--<div>
+          <div>
             <fieldset>
               <legend>Solo para PRUEBAS</legend>
               Código reserva - COTEL:{{ deudasStore.qrGenerado.id_transaccion_reserva }}<br>
               Alias QR - SIP:<span style="font-size: 11px;">{{ deudasStore.qrGenerado.alias }}</span>
             </fieldset>
-          </div>-->
+          </div>
           <div v-if="respSocket">
             Mensaje: {{ respSocket ? respSocket.mensaje : '' }}
           </div>
@@ -125,9 +125,10 @@ onMounted(() => {
 });
 const clickDescargarComprobante = async (alias) => {
   await deudasStore.obtenerComprobantes(alias);
+  console.log(deudasStore.lstComprobantes);
   if (deudasStore.lstComprobantes.length > 0) {
     for (var comprobante of deudasStore.lstComprobantes) {
-      console.log("iterandoooo");
+      /*console.log("iterandoooo");
       if (comprobante.includes('factura')) {
         console.log("bajando factura");
         const pdfFacturaUrl = url_api + '/reportes/descargar-factura/' + comprobante;
@@ -138,7 +139,11 @@ const clickDescargarComprobante = async (alias) => {
         const pdfReciboUrl = url_api + '/reportes/descargar-recibo/' + comprobante;
         console.log(pdfReciboUrl);
         window.open(pdfReciboUrl, '_blank');
-      }
+      }*/
+      console.log("bajando recibo");
+      const pdfReciboUrl = url_api + '/reportes/descargar-recibo/' + comprobante;
+      console.log(pdfReciboUrl);
+      window.open(pdfReciboUrl, '_blank');
     }
   }
 }
@@ -172,7 +177,7 @@ const generarQR = async () => {
   let request = {
     deudaIds: deudasStore.deudaSeleccionado.map(item => item.deudaId),
     email: deudasStore.datosCliente.email,
-    telefono: deudasStore.datosCliente.telefono?deudasStore.datosCliente.telefono.trim():''
+    telefono: deudasStore.datosCliente.telefono ? deudasStore.datosCliente.telefono.trim() : ''
   };
   await deudasStore.generarQr(request);
   if (deudasStore.error) {

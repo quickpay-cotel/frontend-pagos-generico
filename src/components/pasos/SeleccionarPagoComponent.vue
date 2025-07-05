@@ -79,5 +79,6 @@ const headers = [
   { key: "periodo", title: "PERIODO", align: "start", },
   { key: "monto", title: "MONTO", align: "end", },
   { key: "montoDescuento", title: "MONTO DESCUENTO", align: "start", },
+  { key: "montoTotal", title: "MONTO TOTAL", align: "start", },
 ];
 </script>

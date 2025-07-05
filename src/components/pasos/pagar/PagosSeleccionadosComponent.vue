@@ -27,6 +27,22 @@
             {{ deuda.monto }}
           </p>
         </div>
+         <div class="detail-item">
+          <p class="font-weight-bold">
+            Monto Descuento
+          </p>
+          <p class="font-weight-thin">
+            {{ deuda.montoDescuento }}
+          </p>
+        </div>
+         <div class="detail-item">
+          <p class="font-weight-bold">
+            Monto Total
+          </p>
+          <p class="bold">
+            {{ deuda.montoTotal }}
+          </p>
+        </div>
         <div style=" border-top: 1px solid #ccc;"></div>
       </div>
       <div class="total">
@@ -47,7 +63,7 @@ const deudasStore = useDeudasStore();
 
 const totalMontoSeleccionado = computed(() => {
   if (deudasStore.datosDeudas) {
-    let total =  deudasStore.deudaSeleccionado.reduce((suma, objeto) => suma + parseFloat( objeto.monto), 0);
+    let total =  deudasStore.deudaSeleccionado.reduce((suma, objeto) => suma + parseFloat( objeto.montoTotal), 0);
     return total?parseFloat(total.toFixed(2)):0;
   }
   else return 0;
