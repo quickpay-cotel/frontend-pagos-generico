@@ -1,13 +1,5 @@
 <template>
- <!-- Solo línea horizontal roja -->
-<!--<hr
-v-if="datosEmpresa.datosEmpresa"
-  :style="{
-    border: '1px solid ' + datosEmpresa.datosEmpresa.colorPrimario,
-    marginTop: '8px',
-    width: '100%'
-  }"
-/>-->
+
 
   <form-wizard v-if="datosEmpresa.datosEmpresa" ref="wizard" shape="circle" nextButtonText="Siguiente" backButtonText="Atras" :color="datosEmpresa.datosEmpresa.colorPrimario"
     @on-change="handleStepChange" @on-complete="resetWizard" finishButtonText="Finalizar">
