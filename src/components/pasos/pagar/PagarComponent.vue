@@ -103,7 +103,6 @@ onMounted(() => {
   socket.on("connect", () => {
     console.log("sokete conectado", url_sockete);
   });
-
   socket.on("notification", (event) => {
     respSocket.value = null;
     if (event) {

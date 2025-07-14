@@ -1,9 +1,7 @@
 <template>
-
-
-  <form-wizard v-if="datosEmpresa.datosEmpresa" ref="wizard" shape="circle" nextButtonText="Siguiente" backButtonText="Atras" :color="datosEmpresa.datosEmpresa.colorPrimario"
+  <form-wizard v-if="datosEmpresa.datosEmpresa" ref="wizard" shape="circle" nextButtonText="Siguiente" backButtonText="Atras" 
+  :color="datosEmpresa.datosEmpresa.colorPrimario"
     @on-change="handleStepChange" @on-complete="resetWizard" finishButtonText="Finalizar">
-    
     <tab-content title="Buscar Cliente">
       <v-card class="mx-auto my-8 rounded-card">
         <BuscarDeudaComponent></BuscarDeudaComponent>
@@ -36,10 +34,8 @@
     </tab-content>
   </form-wizard>
 </template>
-
 <script setup>
 import { ref } from 'vue';
-
 const wizard = ref(null); // Referencia al wizard
 import { basicMessage, showCustomAlert } from '@/utils/swalAlert';
 import { useDeudasStore } from "@/stores/useDeudasStore";
@@ -51,14 +47,10 @@ import PagosSeleccionadosComponent from '@/components/pasos/pagar/PagosSeleccion
 import PagarComponent from '@/components/pasos/pagar/PagarComponent.vue';
 const deudasStore = useDeudasStore();
 const datosEmpresa = useDatosEmpresaStore();
-
 // Dentro de <script setup>
 import { useRoute } from 'vue-router'
-
 const route = useRoute()
 const empresa = route.query.empresa
-
-
 onMounted(async () => {
   console.log(empresa);
   await datosEmpresa.buscarDatosEmpresa(empresa);

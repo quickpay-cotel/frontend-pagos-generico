@@ -4,11 +4,13 @@
       <h2 style="text-align: center;">Detalle de Pago</h2><br>
       <div class="receipt-details" v-for="deuda in deudasStore.deudaSeleccionado" :key="deuda">
         <div class="detail-item">
+
+
           <p class="font-weight-bold">
             Servicio
           </p>
           <p class="font-weight-thin">
-            {{ deuda.descripcionServicio }}
+            {{ deuda.descripcion }}
           </p>
         </div>
         <div class="detail-item">
@@ -21,13 +23,21 @@
         </div>
         <div class="detail-item">
           <p class="font-weight-bold">
-            Monto
+            Cantidad
           </p>
           <p class="font-weight-thin">
-            {{ deuda.monto }}
+            {{ deuda.cantidad }}
           </p>
         </div>
-         <div class="detail-item">
+        <div class="detail-item">
+          <p class="font-weight-bold">
+            Precio Unitario
+          </p>
+          <p class="font-weight-thin">
+            {{ deuda.precioUnitario }}
+          </p>
+        </div>
+        <div class="detail-item">
           <p class="font-weight-bold">
             Monto Descuento
           </p>
@@ -35,7 +45,8 @@
             {{ deuda.montoDescuento }}
           </p>
         </div>
-         <div class="detail-item">
+
+        <div class="detail-item">
           <p class="font-weight-bold">
             Monto Total
           </p>
@@ -62,12 +73,16 @@ const deudasStore = useDeudasStore();
 
 
 const totalMontoSeleccionado = computed(() => {
-  if (deudasStore.datosDeudas) {
-    let total =  deudasStore.deudaSeleccionado.reduce((suma, objeto) => suma + parseFloat( objeto.montoTotal), 0);
-    return total?parseFloat(total.toFixed(2)):0;
+  if (deudasStore.deudaSeleccionado && deudasStore.deudaSeleccionado.length) {
+    let total = deudasStore.deudaSeleccionado.reduce((suma, deuda) => {
+      const cantidad = parseFloat(deuda.cantidad) || 0;
+      const precioUnitario = parseFloat(deuda.precioUnitario) || 0;
+      const montoDescuento = parseFloat(deuda.montoDescuento) || 0;
+      return suma + (cantidad * precioUnitario - montoDescuento);
+    }, 0);
+    return total ? parseFloat(total.toFixed(2)) : 0;
   }
-  else return 0;
-
+  return 0;
 });
 
 </script>

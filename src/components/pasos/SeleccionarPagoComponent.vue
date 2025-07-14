@@ -75,9 +75,10 @@ onUnmounted(() => {
 
 const headers = [
   { key: "seleccionado", title: "SELECCIONAR", align: "start", },
-  { key: "descripcionServicio", title: "SERVICIO", align: "start", },
+  { key: "descripcion", title: "DESCRIPCIÓN", align: "start", },
   { key: "periodo", title: "PERIODO", align: "start", },
-  { key: "monto", title: "MONTO", align: "end", },
+  { key: "cantidad", title: "CANTIDAD", align: "end", },
+  { key: "precioUnitario", title: "PRECIO UNITARIO", align: "end", },
   { key: "montoDescuento", title: "MONTO DESCUENTO", align: "start", },
   { key: "montoTotal", title: "MONTO TOTAL", align: "start", },
 ];
