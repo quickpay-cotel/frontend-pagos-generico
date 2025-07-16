@@ -10,7 +10,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./src/components/AppFooter.vue')['default']
     AppHeaderComponent: typeof import('./src/components/AppHeaderComponent.vue')['default']
-    BuscarDeudaComponent: typeof import('./src/components/pasos/BuscarDeudaComponent.vue')['default']
+    BuscarClienteComponent: typeof import('./src/components/pasos/BuscarClienteComponent.vue')['default']
+    BuscarDeudaComponent: typeof import('./src/components/pasos/BuscarClienteComponent.vue')['default']
     DatosParaFacturaComponent: typeof import('./src/components/pasos/pagar/DatosParaFacturaComponent.vue')['default']
     Default: typeof import('./src/components/default.vue')['default']
     DialogLoadingComponent: typeof import('./src/components/DialogLoadingComponent.vue')['default']
@@ -19,6 +20,7 @@ declare module 'vue' {
     PagosSeleccionadosComponent: typeof import('./src/components/pasos/pagar/PagosSeleccionadosComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SeleccionarDeudasComponent: typeof import('./src/components/pasos/SeleccionarDeudasComponent.vue')['default']
     SeleccionarPagoComponent: typeof import('./src/components/pasos/SeleccionarPagoComponent.vue')['default']
   }
 }

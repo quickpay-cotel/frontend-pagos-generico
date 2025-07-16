@@ -1,11 +1,10 @@
 <template>
   <v-container>
+  
     <v-card border="opacity-40 sm" class="pa-5" rounded="xl" variant="text">
       <h2 style="text-align: center;">Detalle de Pago</h2><br>
-      <div class="receipt-details" v-for="deuda in deudasStore.deudaSeleccionado" :key="deuda">
+      <div class="receipt-details" v-for="deuda in pasarelaStore.lstDeudasSeleccionadas" :key="deuda">
         <div class="detail-item">
-
-
           <p class="font-weight-bold">
             Servicio
           </p>
@@ -68,13 +67,12 @@
   </v-container>
 </template>
 <script setup>
-import { useDeudasStore } from '@/stores/useDeudasStore';
-const deudasStore = useDeudasStore();
-
+import { usePasarelaStore } from '@/stores/usePasarelaStore';
+const pasarelaStore = usePasarelaStore();
 
 const totalMontoSeleccionado = computed(() => {
-  if (deudasStore.deudaSeleccionado && deudasStore.deudaSeleccionado.length) {
-    let total = deudasStore.deudaSeleccionado.reduce((suma, deuda) => {
+  if (pasarelaStore.lstDeudasSeleccionadas.length) {
+    let total = pasarelaStore.lstDeudasSeleccionadas.reduce((suma, deuda) => {
       const cantidad = parseFloat(deuda.cantidad) || 0;
       const precioUnitario = parseFloat(deuda.precioUnitario) || 0;
       const montoDescuento = parseFloat(deuda.montoDescuento) || 0;

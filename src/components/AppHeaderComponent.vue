@@ -1,8 +1,8 @@
 <template>
   <v-app-bar app :elevation="0" absolute color="#FCFCFC" density="prominent">
     <v-row class="fill-height" align="center" justify="center" style="width: 100%;">
-      <v-col cols="auto" v-if="datosEmpresa.datosEmpresa" class="d-flex justify-center">
-        <img :src="datosEmpresa.datosEmpresa.logoBase64" alt="Logo" style="width: 120px; height: 100%; object-fit: fill;" />
+      <v-col cols="auto" v-if="pasarelaStore.datosEmpresa" class="d-flex justify-center">
+        <img :src="pasarelaStore.datosEmpresa.logoBase64" alt="Logo" style="width: 120px; height: 100%; object-fit: fill;" />
       </v-col>
     </v-row>
     <template v-slot:append>
@@ -14,8 +14,8 @@
 </template>
 <script setup>
 const url_wa = import.meta.env.VITE_WA
-import { useDatosEmpresaStore } from "@/stores/useDatosEmpresaStore";
-const datosEmpresa = useDatosEmpresaStore();
+import { usePasarelaStore } from '@/stores/usePasarelaStore';
+const pasarelaStore = usePasarelaStore();
 
 </script>
 
