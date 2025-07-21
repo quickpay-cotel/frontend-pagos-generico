@@ -204,7 +204,7 @@ const clickDescargarFactura = async (alias) => {
   await obtenerComprobantes(alias);
   const facturas = lstComprobantes.value.filter(c => c.includes('factura'));
   for (const factura of facturas) {
-    const fileUrl = `${url_api}/facturas/${factura}`;
+    const fileUrl = `${url_api}/recursos/facturas/${factura}`;
     window.open(fileUrl, '_blank');
   }
 
@@ -215,7 +215,7 @@ const clickDescargarRecibo = async (alias) => {
   await obtenerComprobantes(alias);
   const recibos = lstComprobantes.value.filter(c => c.includes('recibo'));
   for (const recibo of recibos) {
-    const fileUrl = `${url_api}/recibos/${recibo}`;
+    const fileUrl = `${url_api}/recursos/recibos/${recibo}`;
     window.open(fileUrl, '_blank');
   }
 
