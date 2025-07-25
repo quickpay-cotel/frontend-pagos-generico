@@ -48,7 +48,8 @@
 import { ref } from 'vue';
 
 import { basicMessage } from '@/utils/swalAlert'; // Importa la función
-
+import { useRoute } from 'vue-router';
+const route = useRoute();
 
 import { usePasarelaStore } from '@/stores/usePasarelaStore';
 const pasarelaStore = usePasarelaStore();
@@ -67,9 +68,11 @@ const buscarDeudas = async () => {
     const isValid = await formBusquedaDeuda.value.validate();
     if (isValid.valid) {
       loadingStore.startLoading('buscando deudas ..')
+      const slug = route.query.empresa;
       let request = {
         tipoPago: pasarelaStore.datosBusqueda.tipoPago,
-        parametroBusqueda: pasarelaStore.datosBusqueda.parametroBusqueda.trim()
+        parametroBusqueda: pasarelaStore.datosBusqueda.parametroBusqueda.trim(),
+        slug:slug
       }
       try {
         let response = await axiosInstance.post('/deudas/datos-cliente', request);

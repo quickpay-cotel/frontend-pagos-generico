@@ -23,7 +23,7 @@
           <PagarComponent></PagarComponent>
         </v-col>
       </v-row>
-      <v-alert v-else border="top" type="warning" variant="outlined" prominent>
+      <v-alert v-else border="top" type="warning" variant="outlined" prominent color="primary">
         No existe Deudas Seleccionados
       </v-alert>
     </tab-content>

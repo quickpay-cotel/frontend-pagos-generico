@@ -157,7 +157,7 @@ const generarQR = async () => {
   const request = {
     deudaIds: pasarelaStore.lstDeudasSeleccionadas.map(item => item.deudaId),
     email: pasarelaStore.datosCliente.email,
-    telefono: pasarelaStore.datosCliente.telefono ? pasarelaStore.datosCliente.telefono.trim() : ''
+    //telefono: pasarelaStore.datosCliente.telefono ? pasarelaStore.datosCliente.telefono.trim() : ''
   };
   await generaQr(request);
   generandoQr.value = false;

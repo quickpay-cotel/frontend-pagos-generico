@@ -11,13 +11,13 @@
         </v-row>
         <v-row align="center" justify="center">
           <v-col cols="12" md="3"> <v-text-field v-model="pasarelaStore.datosCliente.email" color="primary"
-              label="Correo Electrónico" variant="underlined"></v-text-field>
+              label="Correo electrónico para envio de comprobante" variant="underlined"></v-text-field>
           </v-col>
-          <v-col cols="12" md="3">
+          <!--<v-col cols="12" md="3">
             <v-text-field v-model="pasarelaStore.datosCliente.telefono" color="primary" label="Nro Celular" variant="underlined"
               type="text" maxlength="20"
               @input="pasarelaStore.datosCliente.telefono = pasarelaStore.datosCliente.telefono.replace(/\D/g, '').slice(0, 20)"></v-text-field>
-          </v-col>
+          </v-col>-->
         </v-row>
       </div>
     </v-card>

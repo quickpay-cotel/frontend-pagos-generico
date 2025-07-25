@@ -15,6 +15,8 @@ const pasarelaStore = usePasarelaStore();
 import { useLoadingStore } from '@/stores/useLoadingStore'
 const loadingStore = useLoadingStore()
 import axiosInstance from "@/services/axios";
+import { useRoute } from 'vue-router';
+const route = useRoute();
 
 const indiceSeleccionadoAnterior = ref(-1); // Guarda el índice anterior
 
@@ -44,9 +46,11 @@ const buscaDeudas = async () => {
   console.log('busca deudas');
   try {
     loadingStore.startLoading('cargando deudas....')
+    const slug = route.query.empresa;
     let request = {
       tipoPago: pasarelaStore.datosBusqueda.tipoPago,
-      parametroBusqueda: pasarelaStore.datosBusqueda.parametroBusqueda.trim()
+      parametroBusqueda: pasarelaStore.datosBusqueda.parametroBusqueda.trim(),
+      slug
     }
     let response = await axiosInstance.post('/deudas/cobros-pendiente', request);
     // Mantener seleccionados previos
@@ -74,5 +78,7 @@ const headers = [
   { key: "precioUnitario", title: "PRECIO UNITARIO", align: "end", },
   { key: "montoDescuento", title: "MONTO DESCUENTO", align: "end", },
   { key: "montoTotal", title: "MONTO TOTAL", align: "end", },
+  { key: "generaFactura", title: "GENERA FACTURA?", align: "center", },
+  
 ];
 </script>
