@@ -31,6 +31,7 @@
 </template>
 <script setup>
 import { ref } from 'vue';
+import { basicMessage, showCustomAlert } from '@/utils/swalAlert';
 const wizard = ref(null); // Referencia al wizard
 
 import BuscarClienteComponent from '@/components/pasos/BuscarClienteComponent.vue';
@@ -62,6 +63,7 @@ const handleStepChange = async (prevIndex, nextIndex) => {
 
 
 const resetWizard = async () => {
+  console.log("finalizando wizard");
   if (pasarelaStore.lstDeudasSeleccionadas.length) {
     let result = await showCustomAlert('Finalizar', 'Esta seguro de finalizar?, perdera los pagos seleccionados');
     if (result.isConfirmed) {

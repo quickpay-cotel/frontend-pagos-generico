@@ -43,7 +43,13 @@ const actualizarSeleccionados = (index, item) => {
 
 
 const buscaDeudas = async () => {
-  console.log('busca deudas');
+
+  // Reiniciar listas
+  pasarelaStore.qrGenerado = null;
+  pasarelaStore.lstDeudasTodos = [];
+  pasarelaStore.lstDeudasSeleccionadas = [];
+  
+
   try {
     loadingStore.startLoading('cargando deudas....')
     const slug = route.query.empresa;
@@ -62,9 +68,6 @@ const buscaDeudas = async () => {
     pasarelaStore.lstDeudasSeleccionadas = pasarelaStore.lstDeudasTodos.filter(r => r.seleccionado);
     loadingStore.stopLoading()
   } catch (error) {
-    pasarelaStore.lstDeudasTodos = [];
-    pasarelaStore.lstDeudasSeleccionadas = [];
-    loadingStore.stopLoading()
   }
 };
 defineExpose({
@@ -79,6 +82,6 @@ const headers = [
   { key: "montoDescuento", title: "MONTO DESCUENTO", align: "end", },
   { key: "montoTotal", title: "MONTO TOTAL", align: "end", },
   { key: "generaFactura", title: "GENERA FACTURA?", align: "center", },
-  
+
 ];
 </script>
